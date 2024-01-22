@@ -1,0 +1,48 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+
+cors:
+  allowed-origins: "*"
+  allowed-methods: "*"
+  allowed-headers: "*"
+  exposed-headers: "*"
+
+aws:
+  region: eu-west-1
+  s3:
+    mock: true
+    buckets:
+      customer: fs-amigoscode-customer-test
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+
+spring:
+  flyway:
+  enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/yourdatabase
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: true
+  main:
+    web-application-type: servlet
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  codec:
+    max-in-memory-size: 10MB
